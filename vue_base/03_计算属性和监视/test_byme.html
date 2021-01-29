@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        const p = {
+            firstname: 'A' ,
+            lastname: 'B'
+        }
+        Object.defineProperty(p,'fullname',{
+            get() {
+                return fullname = firstname + '-'+lastname
+            },
+            set(value) {
+                const names = value.split('-')
+                this.firstname = names[0]
+                this.lastname = names[1]
+                console.log(this)
+
+            }
+        })
+        p.fullname = 'C-D'
+    </script>
+</body>
+</html>

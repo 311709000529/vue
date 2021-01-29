@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        性: <input type="text" v-model='firstname'> <br/>
+        名: <input type="text" v-model='lastname'> <br />
+        FullName1: <input type="text" v-model='fullname1'> <br />
+        FullName2: <input type="text" v-model='fullname2'> <br/>
+        FullName3: <input type="text" v-model='fullname3'> <br />
+    </div>
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        // el:"#test" ,
+        data:{
+            firstname:"A" ,
+            lastname:"B",
+            fullname2:'A-B'
+        },
+        computed: {
+            fullname1() {
+                return this.firstname + '-' + this.lastname 
+            },
+            fullname3 : {
+                get() {
+                    return this.firstname + '-' + this.lastname
+                },
+                set(value) {
+                    const names = value.split('-')
+                    this.firstname = names[0]
+                    this.lastname = names[1]
+                }
+            }
+        },
+        watch:{ //指定监视vm元素
+            firstname (value )  {
+                console.log(this)
+                this.fullname2 = value + '-' + this.lastname
+            } ,
+            lastname (value ) {
+                this.fullname2 = this.firstname + '-' + value
+            }
+        }
+    })
+    vm.$mount('#test')
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <h1>双大括号</h1>
+        <p>{{content.toLowerCase()}}</p>
+        <p>{{content.toUpperCase()}}</p>
+        <h1>强制数据绑定</h1>
+        <a v-bind:href='url'>点击跳转</a>
+        <a :href='url'>点击跳转</a>
+        <h1>绑定数据监听</h1>
+        <button v-on:click='test'>点击输出</button>
+        <button @click='test2'>点击输出</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#test",
+            data:{
+                content:"Hello",
+                url:"http://www.baidu.com"
+            },
+            methods:{
+                test(event) {
+                    alert('test')
+                } ,
+                test2(event) {
+                    alert('test2')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

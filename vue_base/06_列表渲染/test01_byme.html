@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <h1>v-for</h1>
+        <ul>
+            <li v-for='(p ,index) in persons ' :key='p.id'>
+                {{p.id}}--{{p.name}}--{{p.age}}--<button @click='deleLi(index)'>删除</button>
+                <button @click='updateLi(index)'>更新</button>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#test" ,
+            data:{
+                persons:[
+                    {id: 1, name: 'Tom', age: 15},
+                    {id: 2, name: 'Jack', age: 12},
+                    {id: 4, name: 'Bob', age: 17},
+                    {id: 6, name: 'Rose', age: 16},
+                    {id: 8, name: 'Else', age: 13}
+                ]
+            },
+            methods:{
+                deleLi(index) {
+                    this.persons.splice(index,1)
+                } ,
+                updateLi(index) {
+                    let obj = {
+                        id:999,
+                        name:'xxxx',
+                        age:55
+                    }
+                    this.persons.splice(index,1,obj)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
